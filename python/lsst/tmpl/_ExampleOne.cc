@@ -21,6 +21,8 @@
 
 #include "pybind11/pybind11.h"
 #include "pybind11/stl.h"
+#include <pybind11/numpy.h>
+
 #include "ndarray/pybind11.h"
 
 #include "lsst/utils/python.h"
@@ -57,6 +59,7 @@ void wrapExampleOne(utils::python::WrapperCollection & wrappers) {
             cls.def("computeSomeVector", &ExampleOne::computeSomeVector);
             cls.def("doSomethingWithArray", &ExampleOne::doSomethingWithArray);
             cls.def_static("initializeSomething", &ExampleOne::initializeSomething);
+            cls.def("add_arrays", &ExampleOne::add_arrays);
             cls.def("__eq__", &ExampleOne::operator==, py::is_operator());
             cls.def("__ne__", &ExampleOne::operator!=, py::is_operator());
             cls.def("__iadd__", &ExampleOne::operator+=);

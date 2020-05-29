@@ -28,9 +28,14 @@
 #include <string>
 #include <vector>
 
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+
 #include "ndarray.h"
 
 #include "lsst/pex/exceptions.h"
+
+namespace py = pybind11;
 
 namespace lsst {
 namespace tmpl {
@@ -125,6 +130,8 @@ public:
      * @param someValue some value to do something with
      */
     static void initializeSomething(std::string const& someValue);
+
+    py::array_t<double> add_arrays(py::array_t<double> input1, py::array_t<double> input2);
 
     bool operator==(ExampleOne const& other) { return _value == other._value; }
     bool operator!=(ExampleOne const& other) { return _value != other._value; }
